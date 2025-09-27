@@ -576,22 +576,6 @@
         html {
             scroll-behavior: smooth;
         }
-        
-        /* Install Button */
-        .install-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose));
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(219, 157, 194, 0.4);
-            display: none;
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
@@ -620,13 +604,13 @@
     <section id="home" class="hero">
         <div class="carousel-container">
             <div class="carousel-slide active">
-                <img src="assets/KakaoTalk_20250830_010930703_1756536902231.jpg" alt="Grace's Catering elegant sushi platter">
+                <img src="hero1.jpg" alt="Grace's Catering elegant sushi platter">
             </div>
             <div class="carousel-slide">
-                <img src="assets/KakaoTalk_20250830_010930703_03_1756536902232.jpg" alt="Grace's Catering premium buffet setup">
+                <img src="hero2.jpg" alt="Grace's Catering premium buffet setup">
             </div>
             <div class="carousel-slide">
-                <img src="assets/KakaoTalk_20250830_010930703_04_1756536902232.jpg" alt="Grace's Catering elegant food presentation">
+                <img src="hero3.jpg" alt="Grace's Catering elegant food presentation">
             </div>
         </div>
         <div class="carousel-overlay"></div>
@@ -741,37 +725,37 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="assets/KakaoTalk_20250830_010930703_1756536902231.jpg" alt="Grace's Catering signature sushi presentation">
+                    <img src="gallery1.jpg" alt="Grace's Catering signature sushi presentation">
                     <div class="gallery-overlay">
                         <h4>Signature Sushi Presentation</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/KakaoTalk_20250830_010930703_05_1756536902233.jpg" alt="Elegant buffet arrangement with multiple platters">
+                    <img src="gallery2.jpg" alt="Elegant buffet arrangement with multiple platters">
                     <div class="gallery-overlay">
                         <h4>Elegant Buffet Arrangement</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/KakaoTalk_20250830_010930703_07_1756536902233.jpg" alt="Gourmet appetizer selection">
+                    <img src="gallery3.jpg" alt="Gourmet appetizer selection">
                     <div class="gallery-overlay">
                         <h4>Gourmet Appetizer Selection</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/KakaoTalk_20250830_010930703_09_1756536902234.jpg" alt="Fresh vegetable and fruit display">
+                    <img src="gallery4.jpg" alt="Fresh vegetable and fruit display">
                     <div class="gallery-overlay">
                         <h4>Fresh Vegetable & Fruit Display</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/KakaoTalk_20250830_010930703_10_1756536902234.jpg" alt="Artisanal egg salad canapés">
+                    <img src="gallery5.jpg" alt="Artisanal egg salad canapés">
                     <div class="gallery-overlay">
                         <h4>Artisanal Egg Salad Canapés</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/KakaoTalk_20250830_010930703_11_1756536902234.jpg" alt="Premium shrimp platter presentation">
+                    <img src="gallery6.jpg" alt="Premium shrimp platter presentation">
                     <div class="gallery-overlay">
                         <h4>Premium Shrimp Platter</h4>
                     </div>
@@ -1028,9 +1012,6 @@
         </div>
     </footer>
 
-    <!-- Install App Button -->
-    <button class="install-btn" onclick="installApp()" id="installBtn">📱 Install App</button>
-
     <script>
         // Image Carousel functionality
         let currentSlideIndex = 0;
@@ -1063,41 +1044,6 @@
         // Auto-advance carousel every 4 seconds
         setInterval(nextSlide, 4000);
         
-        // PWA Install
-        let deferredPrompt;
-        
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installBtn').style.display = 'block';
-        });
-        
-        function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    }
-                    deferredPrompt = null;
-                    document.getElementById('installBtn').style.display = 'none';
-                });
-            }
-        }
-        
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then((registration) => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch((registrationError) => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
-        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1124,12 +1070,11 @@
             });
         }
         
-        // Gallery lightbox effect (optional enhancement)
+        // Gallery interaction
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', function() {
                 const img = this.querySelector('img');
                 if (img) {
-                    // Simple zoom effect
                     img.style.transform = 'scale(1.1)';
                     setTimeout(() => {
                         img.style.transform = 'scale(1)';
