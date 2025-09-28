@@ -571,27 +571,64 @@
         }
 
         function startAutoSlide() {
+            // Clear any existing interval first
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+            }
             autoSlideInterval = setInterval(nextSlide, 4000);
-            console.log('▶️ Auto-slide started');
+            console.log('▶️ Auto-slide started with interval:', autoSlideInterval);
         }
 
         function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
             console.log('⏸️ Auto-slide stopped');
         }
 
-        // Initialize carousel
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('📄 DOM loaded, initializing carousel...');
-            showSlide(0);
-            startAutoSlide();
+        // Initialize carousel with multiple fallbacks
+        function initializeCarousel() {
+            console.log('📄 Initializing carousel...');
+            
+            if (slides.length > 0 && dots.length > 0) {
+                showSlide(0);
+                
+                // Start auto-slide with a small delay to ensure everything is loaded
+                setTimeout(() => {
+                    startAutoSlide();
+                    console.log('⏰ Auto-slide timer initiated');
+                }, 500);
 
-            // Pause on hover
-            const hero = document.querySelector('.hero');
-            hero.addEventListener('mouseenter', stopAutoSlide);
-            hero.addEventListener('mouseleave', startAutoSlide);
+                // Pause on hover with fallback
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.addEventListener('mouseenter', () => {
+                        console.log('🖱️ Mouse entered, pausing auto-slide');
+                        stopAutoSlide();
+                    });
+                    hero.addEventListener('mouseleave', () => {
+                        console.log('🖱️ Mouse left, resuming auto-slide');
+                        startAutoSlide();
+                    });
+                }
 
-            console.log('✅ Simple carousel initialized successfully!');
+                console.log('✅ Carousel initialized successfully!');
+            } else {
+                console.warn('⚠️ Carousel elements not found, retrying...');
+                setTimeout(initializeCarousel, 100);
+            }
+        }
+
+        // Multiple initialization attempts
+        document.addEventListener('DOMContentLoaded', initializeCarousel);
+        
+        // Fallback initialization
+        window.addEventListener('load', () => {
+            if (!autoSlideInterval) {
+                console.log('🔄 Fallback initialization...');
+                initializeCarousel();
+            }
         });
 
         // Smooth scrolling for navigation links
