@@ -647,5 +647,111 @@
 
         console.log('🎉 All scripts loaded successfully!');
     </script>
+<script>
+// WORKING CAROUSEL JAVASCRIPT - FINAL VERSION
+let currentSlideIndex = 0;
+let slides, dots;
+let carouselInterval;
+
+function showSlide(n) {
+    if (!slides || !dots || slides.length === 0) return;
+    
+    // Hide all slides and dots
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Normalize slide index
+    if (n >= slides.length) currentSlideIndex = 0;
+    if (n < 0) currentSlideIndex = slides.length - 1;
+    
+    // Show current slide
+    if (slides[currentSlideIndex] && dots[currentSlideIndex]) {
+        slides[currentSlideIndex].classList.add('active');
+        dots[currentSlideIndex].classList.add('active');
+        console.log('✅ Showing slide:', currentSlideIndex);
+    }
+}
+
+function nextSlide() {
+    currentSlideIndex++;
+    showSlide(currentSlideIndex);
+}
+
+function currentSlide(n) {
+    currentSlideIndex = n - 1;
+    showSlide(currentSlideIndex);
+}
+
+function startCarousel() {
+    if (carouselInterval) clearInterval(carouselInterval);
+    carouselInterval = setInterval(nextSlide, 4000);
+    console.log('🎠 Carousel auto-rotation started (4s intervals)');
+}
+
+function stopCarousel() {
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+        carouselInterval = null;
+        console.log('⏸️ Carousel paused');
+    }
+}
+
+// Initialize carousel when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🎉 Grace\'s Catering - DOM Ready');
+    
+    // Get carousel elements AFTER DOM is loaded
+    slides = document.querySelectorAll('.carousel-slide');
+    dots = document.querySelectorAll('.carousel-dot');
+    
+    console.log('🖼️ Found', slides.length, 'carousel slides');
+    console.log('🔘 Found', dots.length, 'carousel dots');
+    
+    if (slides.length > 0 && dots.length > 0) {
+        // Initialize first slide
+        showSlide(0);
+        
+        // Add click handlers to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                console.log('🔘 Dot clicked:', index);
+                currentSlide(index + 1);
+                startCarousel(); // Restart auto-rotation
+            });
+        });
+        
+        // Add hover pause/resume
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', function() {
+                console.log('🖱️ Mouse enter - pausing carousel');
+                stopCarousel();
+            });
+            heroSection.addEventListener('mouseleave', function() {
+                console.log('🖱️ Mouse leave - resuming carousel');
+                startCarousel();
+            });
+        }
+        
+        // Start auto-rotation after small delay
+        setTimeout(function() {
+            startCarousel();
+            console.log('✅ Carousel fully initialized and running');
+        }, 1000);
+        
+    } else {
+        console.warn('❌ Carousel elements not found!');
+    }
+});
+
+// Export for global access
+window.currentSlide = currentSlide;
+window.nextSlide = nextSlide;
+window.showSlide = showSlide;
+window.startCarousel = startCarousel;
+window.stopCarousel = stopCarousel;
+
+console.log('🎉 Grace\'s Catering JavaScript Loaded Successfully!');
+    </script>
 </body>
 </html>
