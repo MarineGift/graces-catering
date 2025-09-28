@@ -78,17 +78,18 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            font-size: 18px;
+            width: 40px !important;
+            height: 40px !important;
+            background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose)) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: white !important;
+            font-family: 'Playfair Display', serif !important;
+            font-weight: bold !important;
+            font-size: 18px !important;
+            box-shadow: 0 2px 10px rgba(219, 157, 194, 0.3) !important;
         }
 
         .logo-text {
@@ -154,17 +155,21 @@
         }
 
         .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transition: opacity 1s ease-in-out !important;
+            z-index: 1 !important;
         }
 
         .carousel-slide.active {
-            opacity: 1;
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 2 !important;
         }
 
         .carousel-slide img {
@@ -181,12 +186,12 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, rgba(219, 157, 194, 0.8) 0%, rgba(230, 184, 214, 0.7) 100%);
-            z-index: 2;
+            z-index: 3;
         }
 
         .hero-content {
             position: relative;
-            z-index: 3;
+            z-index: 4;
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
@@ -241,20 +246,28 @@
             transform: translateX(-50%);
             display: flex;
             gap: 15px;
-            z-index: 4;
+            z-index: 5;
         }
 
         .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background 0.3s;
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
+            background: rgba(255, 255, 255, 0.5) !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            border: none !important;
+            outline: none !important;
         }
 
         .carousel-dot.active {
-            background: white;
+            background: white !important;
+            transform: scale(1.2) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.8) !important;
         }
 
         /* Sections */
@@ -601,13 +614,13 @@
     <!-- Hero Section with Image Carousel -->
     <section id="home" class="hero">
         <div class="carousel-container">
-            <div class="carousel-slide active">
+            <div class="carousel-slide active" data-slide="0">
                 <img src="assets/images/hero1.jpg" alt="Grace's Catering elegant sushi platter">
             </div>
-            <div class="carousel-slide">
+            <div class="carousel-slide" data-slide="1">
                 <img src="assets/images/hero2.jpg" alt="Grace's Catering premium buffet setup">
             </div>
-            <div class="carousel-slide">
+            <div class="carousel-slide" data-slide="2">
                 <img src="assets/images/hero3.jpg" alt="Grace's Catering elegant food presentation">
             </div>
         </div>
@@ -623,9 +636,9 @@
         </div>
         
         <div class="carousel-nav">
-            <div class="carousel-dot active" onclick="currentSlide(1)"></div>
-            <div class="carousel-dot" onclick="currentSlide(2)"></div>
-            <div class="carousel-dot" onclick="currentSlide(3)"></div>
+            <div class="carousel-dot active" data-slide="0"></div>
+            <div class="carousel-dot" data-slide="1"></div>
+            <div class="carousel-dot" data-slide="2"></div>
         </div>
     </section>
 
@@ -1011,6 +1024,9 @@
     </footer>
 
     <script>
+        // Console log to verify script loading
+        console.log('🚀 Grace\'s Catering JavaScript loading...');
+
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -1024,64 +1040,126 @@
             });
         }
 
-        // Image Carousel functionality
+        // Image Carousel functionality with improved logic
         let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-
-        function showSlide(n) {
-            // Hide all slides
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Show current slide
-            if (n >= slides.length) currentSlideIndex = 0;
-            if (n < 0) currentSlideIndex = slides.length - 1;
-            
-            if (slides[currentSlideIndex] && dots[currentSlideIndex]) {
-                slides[currentSlideIndex].classList.add('active');
-                dots[currentSlideIndex].classList.add('active');
-            }
-        }
-
-        function currentSlide(n) {
-            currentSlideIndex = n - 1;
-            showSlide(currentSlideIndex);
-        }
-
-        function nextSlide() {
-            currentSlideIndex++;
-            showSlide(currentSlideIndex);
-        }
-
-        // Auto-advance carousel every 4 seconds
         let carouselInterval;
+        let isHovered = false;
 
-        function startCarousel() {
-            carouselInterval = setInterval(nextSlide, 4000);
-        }
-
-        function stopCarousel() {
-            clearInterval(carouselInterval);
-        }
-
-        // Start carousel when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('🎉 Grace\'s Catering loaded!');
-            console.log('🖼️ Found', slides.length, 'carousel slides');
-            console.log('🎯 Found', dots.length, 'carousel dots');
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
             
-            if (slides.length > 0) {
-                startCarousel();
-                console.log('✅ Carousel started');
+            console.log('🎢 Initializing carousel...');
+            console.log('📸 Found', slides.length, 'slides');
+            console.log('🎯 Found', dots.length, 'dots');
+            
+            if (slides.length === 0 || dots.length === 0) {
+                console.error('❌ No slides or dots found!');
+                return;
+            }
+
+            // Show slide function with forced styling
+            function showSlide(index) {
+                console.log('🖼️ Showing slide:', index);
                 
-                // Pause carousel on hover
-                const heroSection = document.querySelector('.hero');
-                if (heroSection) {
-                    heroSection.addEventListener('mouseenter', stopCarousel);
-                    heroSection.addEventListener('mouseleave', startCarousel);
+                // Force hide all slides
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    slide.style.opacity = '0';
+                    slide.style.visibility = 'hidden';
+                    slide.style.zIndex = '1';
+                });
+                
+                // Force hide all dots
+                dots.forEach((dot, i) => {
+                    dot.classList.remove('active');
+                });
+                
+                // Ensure valid index
+                if (index >= slides.length) index = 0;
+                if (index < 0) index = slides.length - 1;
+                currentSlideIndex = index;
+                
+                // Force show current slide
+                const currentSlide = slides[currentSlideIndex];
+                const currentDot = dots[currentSlideIndex];
+                
+                if (currentSlide) {
+                    currentSlide.classList.add('active');
+                    currentSlide.style.opacity = '1';
+                    currentSlide.style.visibility = 'visible';
+                    currentSlide.style.zIndex = '2';
+                    console.log('✅ Active slide set:', currentSlideIndex);
+                }
+                
+                if (currentDot) {
+                    currentDot.classList.add('active');
+                    console.log('✅ Active dot set:', currentSlideIndex);
                 }
             }
+
+            // Next slide function
+            function nextSlide() {
+                if (!isHovered) {
+                    console.log('➡️ Moving to next slide');
+                    showSlide(currentSlideIndex + 1);
+                }
+            }
+
+            // Manual slide change
+            function goToSlide(index) {
+                console.log('🎯 Manual slide change to:', index);
+                showSlide(index);
+            }
+
+            // Start auto-rotation
+            function startCarousel() {
+                if (carouselInterval) clearInterval(carouselInterval);
+                carouselInterval = setInterval(nextSlide, 4000);
+                console.log('▶️ Carousel auto-rotation started');
+            }
+
+            // Stop auto-rotation
+            function stopCarousel() {
+                if (carouselInterval) {
+                    clearInterval(carouselInterval);
+                    carouselInterval = null;
+                    console.log('⏸️ Carousel auto-rotation stopped');
+                }
+            }
+
+            // Add click handlers to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => goToSlide(index));
+            });
+
+            // Add hover handlers
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.addEventListener('mouseenter', () => {
+                    isHovered = true;
+                    stopCarousel();
+                    console.log('🖱️ Mouse entered - carousel paused');
+                });
+                
+                heroSection.addEventListener('mouseleave', () => {
+                    isHovered = false;
+                    startCarousel();
+                    console.log('🖱️ Mouse left - carousel resumed');
+                });
+            }
+
+            // Initialize first slide and start rotation
+            showSlide(0);
+            startCarousel();
+            
+            console.log('🎉 Carousel initialization complete!');
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('📄 DOM loaded - initializing carousel...');
+            setTimeout(initCarousel, 100); // Small delay to ensure all elements are rendered
         });
 
         // Smooth scrolling for navigation links
@@ -1135,20 +1213,7 @@
             });
         });
 
-        // Export functions for global access
-        window.currentSlide = currentSlide;
-        window.nextSlide = nextSlide;
-        window.showSlide = showSlide;
-
-        console.log('🚀 All scripts loaded successfully!');
-        
-        // Debug: Check if elements exist
-        setTimeout(() => {
-            console.log('🔍 Debug check:');
-            console.log('Slides found:', document.querySelectorAll('.carousel-slide').length);
-            console.log('Dots found:', document.querySelectorAll('.carousel-dot').length);
-            console.log('Logo icon:', document.querySelector('.logo-icon') ? 'Found' : 'Not found');
-        }, 1000);
+        console.log('✨ All Grace\'s Catering scripts loaded successfully!');
     </script>
 </body>
 </html>
