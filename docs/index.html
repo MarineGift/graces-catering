@@ -75,6 +75,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo-icon {
@@ -90,6 +96,11 @@
             font-weight: bold !important;
             font-size: 18px !important;
             box-shadow: 0 2px 10px rgba(219, 157, 194, 0.3) !important;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            box-shadow: 0 4px 20px rgba(219, 157, 194, 0.5) !important;
         }
 
         .logo-text {
@@ -887,164 +898,264 @@
             
             <div class="menu-categories">
                 <button class="menu-category-btn active" data-category="all" data-testid="button-menu-all">All Items</button>
-                <button class="menu-category-btn" data-category="appetizers" data-testid="button-menu-appetizers">Appetizers</button>
-                <button class="menu-category-btn" data-category="dumplings-rolls" data-testid="button-menu-dumplings">Dumplings & Rolls</button>
-                <button class="menu-category-btn" data-category="korean-specialties" data-testid="button-menu-korean">Korean Specialties</button>
-                <button class="menu-category-btn" data-category="salads" data-testid="button-menu-salads">Salads</button>
+                <button class="menu-category-btn" data-category="meat" data-testid="button-menu-meat">MEAT</button>
+                <button class="menu-category-btn" data-category="seafood" data-testid="button-menu-seafood">SEAFOOD</button>
+                <button class="menu-category-btn" data-category="vegetable-rice" data-testid="button-menu-vegetable">VEGETABLE/RICE/DUMPLINGS</button>
+                <button class="menu-category-btn" data-category="salad" data-testid="button-menu-salad">SALAD</button>
             </div>
             
             <div class="menu-grid" id="menuGrid">
-                <!-- Appetizers -->
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-cocktail-shrimp">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/cocktail-shrimp.jpg" alt="Cocktail Shrimp">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Cocktail Shrimp</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-crab-cakes">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/crab-cakes.png" alt="Crab Cakes">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Crab Cakes</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-honey-glazed-cod">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/honey-glazed-cod.jpg" alt="Honey Glazed Cod">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Honey Glazed Cod</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-salmon">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/salmon.png" alt="Salmon">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Salmon</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <!-- Dumplings & Rolls -->
-                <div class="menu-item" data-category="dumplings-rolls" data-testid="menu-item-mandu">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="Dumplings (Mandu)">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Dumplings (Mandu)</h3>
-                        <p class="menu-item-category">Dumplings & Rolls</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="dumplings-rolls" data-testid="menu-item-steamed-fried-mandu">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/dumplings-rolls/steamed-fried-mandu.jpg" alt="Steamed or Fried Mandu">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Steamed or Fried Mandu</h3>
-                        <p class="menu-item-category">Dumplings & Rolls</p>
-                    </div>
-                </div>
-                
-                <!-- Korean Specialties -->
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-bulgogi">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/korean-specialties/bulgogi.png" alt="Bulgogi">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Bulgogi</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-chicken-wings">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/korean-specialties/chicken-wings.jpg" alt="Chicken Wings">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Chicken Wings</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-galbi">
+                <!-- MEAT -->
+                <div class="menu-item" data-category="meat" data-testid="menu-item-galbi">
                     <div class="menu-item-image">
                         <img src="assets/images/menu/korean-specialties/galbi.jpg" alt="Galbi">
                     </div>
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Galbi</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
+                        <p class="menu-item-category">MEAT</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-korean-style-chicken">
+                <div class="menu-item" data-category="meat" data-testid="menu-item-bulgogi">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/korean-specialties/bulgogi.png" alt="Bulgogi">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Bulgogi</h3>
+                        <p class="menu-item-category">MEAT</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="meat" data-testid="menu-item-korean-style-chicken">
                     <div class="menu-item-image">
                         <img src="assets/images/menu/korean-specialties/korean-style-chicken.jpg" alt="Korean Style Chicken">
                     </div>
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Korean Style Chicken</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
+                        <p class="menu-item-category">MEAT</p>
                     </div>
                 </div>
                 
-                <!-- Salads -->
-                <div class="menu-item" data-category="salads" data-testid="menu-item-chicken-salad">
+                <!-- SEAFOOD -->
+                <div class="menu-item" data-category="seafood" data-testid="menu-item-cocktail-shrimp">
                     <div class="menu-item-image">
-                        <img src="assets/images/menu/salads/chicken-salad.jpg" alt="Chicken Salad">
+                        <img src="assets/images/menu/appetizers/cocktail-shrimp.jpg" alt="Cocktail Shrimp">
                     </div>
                     <div class="menu-item-content">
-                        <h3 class="menu-item-title">Chicken Salad</h3>
-                        <p class="menu-item-category">Salads</p>
+                        <h3 class="menu-item-title">Cocktail Shrimp</h3>
+                        <p class="menu-item-category">SEAFOOD</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="salads" data-testid="menu-item-egg-salad">
+                <div class="menu-item" data-category="seafood" data-testid="menu-item-shrimp-garlic-butter">
                     <div class="menu-item-image">
-                        <img src="assets/images/menu/salads/egg-salad.webp" alt="Egg Salad">
+                        <img src="assets/images/menu/appetizers/cocktail-shrimp.jpg" alt="Shrimp with Garlic Butter">
                     </div>
                     <div class="menu-item-content">
-                        <h3 class="menu-item-title">Egg Salad</h3>
-                        <p class="menu-item-category">Salads</p>
+                        <h3 class="menu-item-title">Shrimp with Garlic Butter</h3>
+                        <p class="menu-item-category">SEAFOOD</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="salads" data-testid="menu-item-garden-salad">
+                <div class="menu-item" data-category="seafood" data-testid="menu-item-teriyaki-salmon">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/appetizers/salmon.png" alt="Teriyaki Salmon">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Teriyaki Salmon</h3>
+                        <p class="menu-item-category">SEAFOOD</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="seafood" data-testid="menu-item-smoked-salmon">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/appetizers/salmon.png" alt="Smoked Salmon with Cream Cheese">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Smoked Salmon with Cream Cheese</h3>
+                        <p class="menu-item-category">SEAFOOD</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="seafood" data-testid="menu-item-buttered-cod">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/appetizers/honey-glazed-cod.jpg" alt="Buttered Cod">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Buttered Cod</h3>
+                        <p class="menu-item-category">SEAFOOD</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="seafood" data-testid="menu-item-honey-glazed-cod">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/appetizers/honey-glazed-cod.jpg" alt="Honey Glazed Cod">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Honey Glazed Cod</h3>
+                        <p class="menu-item-category">SEAFOOD</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="seafood" data-testid="menu-item-crab-cakes">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/appetizers/crab-cakes.png" alt="Crab Cakes">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Crab Cakes</h3>
+                        <p class="menu-item-category">SEAFOOD</p>
+                    </div>
+                </div>
+                
+                <!-- VEGETABLE/RICE/DUMPLINGS -->
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-stir-fried-mushrooms">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/korean-specialties/chicken-wings.jpg" alt="Stir Fried Mushrooms">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Stir Fried Mushrooms</h3>
+                        <p class="menu-item-category">VEGETABLE</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-spicy-green-bean">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/korean-specialties/chicken-wings.jpg" alt="Spicy Green Bean">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Spicy Green Bean</h3>
+                        <p class="menu-item-category">VEGETABLE</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-stir-fry-bockchoy">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/korean-specialties/chicken-wings.jpg" alt="Stir-fry Bockchoy">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Stir-fry Bockchoy</h3>
+                        <p class="menu-item-category">VEGETABLE</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-california-roll">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="California Roll">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">California Roll</h3>
+                        <p class="menu-item-category">RICE & NOODLES</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-steamed-rice">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="Steamed Rice">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Steamed Rice</h3>
+                        <p class="menu-item-category">RICE & NOODLES</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-fried-rice">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="Fried Rice">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Fried Rice (Chicken or Shrimp)</h3>
+                        <p class="menu-item-category">RICE & NOODLES</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-lomain">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="Lomain">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Lomain (Chicken or Shrimp)</h3>
+                        <p class="menu-item-category">RICE & NOODLES</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-buckwheat-noodles">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="Buckwheat Cold Noodles">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Buckwheat Cold Noodles with Vegetable</h3>
+                        <p class="menu-item-category">RICE & NOODLES</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-mandu">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/dumplings-rolls/steamed-fried-mandu.jpg" alt="Steamed or Fried Mandu">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Steamed or Fried Mandu</h3>
+                        <p class="menu-item-category">DUMPLINGS & ROLLS</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="vegetable-rice" data-testid="menu-item-vegetable-eggrolls">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="Vegetable Eggrolls">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Vegetable Eggrolls</h3>
+                        <p class="menu-item-category">DUMPLINGS & ROLLS</p>
+                    </div>
+                </div>
+                
+                <!-- SALAD -->
+                <div class="menu-item" data-category="salad" data-testid="menu-item-garden-salad">
                     <div class="menu-item-image">
                         <img src="assets/images/menu/salads/garden-salad.webp" alt="Garden Salad">
                     </div>
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Garden Salad</h3>
-                        <p class="menu-item-category">Salads</p>
+                        <p class="menu-item-category">SALAD</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="salads" data-testid="menu-item-tuna-salad">
+                <div class="menu-item" data-category="salad" data-testid="menu-item-chicken-salad">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/salads/chicken-salad.jpg" alt="Chicken Salad">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Chicken Salad</h3>
+                        <p class="menu-item-category">SALAD</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="salad" data-testid="menu-item-tuna-salad">
                     <div class="menu-item-image">
                         <img src="assets/images/menu/salads/tuna-salad.jpg" alt="Tuna Salad">
                     </div>
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Tuna Salad</h3>
-                        <p class="menu-item-category">Salads</p>
+                        <p class="menu-item-category">SALAD</p>
                     </div>
                 </div>
                 
-                <div class="menu-item" data-category="salads" data-testid="menu-item-fruits-cheese">
+                <div class="menu-item" data-category="salad" data-testid="menu-item-egg-salad">
+                    <div class="menu-item-image">
+                        <img src="assets/images/menu/salads/egg-salad.webp" alt="Egg Salad">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">Egg Salad</h3>
+                        <p class="menu-item-category">SALAD</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="salad" data-testid="menu-item-fruits-cheese">
                     <div class="menu-item-image">
                         <img src="assets/images/menu/salads/fruits-cheese.jpg" alt="Fruits & Cheese">
                     </div>
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Fruits & Cheese</h3>
-                        <p class="menu-item-category">Salads</p>
+                        <p class="menu-item-category">FRUITS & CHEESE</p>
                     </div>
                 </div>
             </div>
