@@ -13,12 +13,14 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Image Carousel functionality
+// Image Carousel functionality - FIXED VERSION
 let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const dots = document.querySelectorAll('.carousel-dot');
+let slides, dots;
+let carouselInterval;
 
 function showSlide(n) {
+    if (!slides || !dots) return;
+    
     // Hide all slides
     slides.forEach(slide => slide.classList.remove('active'));
     dots.forEach(dot => dot.classList.remove('active'));
@@ -43,32 +45,65 @@ function nextSlide() {
     showSlide(currentSlideIndex);
 }
 
-// Auto-advance carousel every 4 seconds
-let carouselInterval;
-
 function startCarousel() {
+    if (carouselInterval) clearInterval(carouselInterval);
     carouselInterval = setInterval(nextSlide, 4000);
+    console.log('✅ Carousel auto-rotation started');
 }
 
 function stopCarousel() {
-    clearInterval(carouselInterval);
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+        carouselInterval = null;
+    }
+    console.log('⏸️ Carousel paused');
 }
 
-// Start carousel when page loads
+// Start carousel when page loads - FIXED
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🎉 Grace\'s Catering loaded!');
+    
+    // Query elements AFTER DOM is loaded
+    slides = document.querySelectorAll('.carousel-slide');
+    dots = document.querySelectorAll('.carousel-dot');
+    
     console.log('🖼️ Found', slides.length, 'carousel slides');
+    console.log('🔘 Found', dots.length, 'carousel dots');
     
     if (slides.length > 0) {
-        startCarousel();
-        console.log('✅ Carousel started');
+        // Initialize first slide
+        showSlide(0);
+        
+        // Start auto-rotation after a small delay
+        setTimeout(() => {
+            startCarousel();
+        }, 1000);
+        
+        // Add click handlers for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                console.log('🔘 Dot clicked:', index);
+                currentSlide(index + 1);
+                startCarousel(); // Restart timer
+            });
+        });
         
         // Pause carousel on hover
         const heroSection = document.querySelector('.hero');
         if (heroSection) {
-            heroSection.addEventListener('mouseenter', stopCarousel);
-            heroSection.addEventListener('mouseleave', startCarousel);
+            heroSection.addEventListener('mouseenter', () => {
+                console.log('🖱️ Mouse enter - pausing carousel');
+                stopCarousel();
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                console.log('🖱️ Mouse leave - resuming carousel');
+                startCarousel();
+            });
         }
+        
+        console.log('✅ Carousel initialization complete');
+    } else {
+        console.warn('❌ No carousel slides found');
     }
 });
 
