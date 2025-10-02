@@ -1506,7 +1506,7 @@
                     const itemCategory = item.getAttribute('data-category');
                     
                     if (category === 'all' || itemCategory === category) {
-                        item.style.display = 'block';
+                        item.style.display = '';
                         item.style.animation = 'fadeIn 0.5s ease-in';
                     } else {
                         item.style.display = 'none';
