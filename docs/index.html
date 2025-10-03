@@ -724,15 +724,27 @@
     <section id="home" class="hero">
         <div class="carousel-container">
             <div class="carousel-slide active" data-slide="0">
-                <img src="assets/images/hero1.jpg" alt="Grace's Catering elegant sushi platter">
+                <img src="assets/images/services/corporate.jpg" alt="Corporate Events - Professional catering services">
             </div>
             <div class="carousel-slide" data-slide="1">
-                <img src="assets/images/hero2.jpg" alt="Grace's Catering premium buffet setup">
+                <img src="assets/images/services/wedding.jpg" alt="Wedding Celebrations - Elegant wedding catering">
             </div>
             <div class="carousel-slide" data-slide="2">
-                <img src="assets/images/hero3.jpg" alt="Grace's Catering elegant food presentation">
+                <img src="assets/images/services/private.jpg" alt="Private Events - Intimate celebration catering">
+            </div>
+            <div class="carousel-slide" data-slide="3">
+                <img src="assets/images/services/specialty.jpg" alt="Specialty Cuisine - Premium specialty dishes">
+            </div>
+            <div class="carousel-slide" data-slide="4">
+                <img src="assets/images/services/planning.jpg" alt="Event Planning - Professional event planning services">
+            </div>
+            <div class="carousel-slide" data-slide="5">
+                <img src="assets/images/services/delivery.jpg" alt="Delivery & Setup - Complete catering setup services">
             </div>
         </div>
+        
+        <button class="carousel-arrow carousel-arrow-left" onclick="carouselPrev()" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); z-index: 100; background: rgba(0,0,0,0.3); color: white; border: none; padding: 15px; border-radius: 50%; cursor: pointer; font-size: 24px; transition: background 0.3s;">‹</button>
+        <button class="carousel-arrow carousel-arrow-right" onclick="carouselNext()" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 100; background: rgba(0,0,0,0.3); color: white; border: none; padding: 15px; border-radius: 50%; cursor: pointer; font-size: 24px; transition: background 0.3s;">›</button>
         
         <div class="container hero-content">
             <h1>Exceptional Catering<br>Unforgettable Experiences</h1>
@@ -747,6 +759,9 @@
             <div class="carousel-dot active" data-slide="0"></div>
             <div class="carousel-dot" data-slide="1"></div>
             <div class="carousel-dot" data-slide="2"></div>
+            <div class="carousel-dot" data-slide="3"></div>
+            <div class="carousel-dot" data-slide="4"></div>
+            <div class="carousel-dot" data-slide="5"></div>
         </div>
     </section>
 
@@ -1153,7 +1168,7 @@
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
                 <div>
-                    <img src="assets/images/about-chef.png" alt="Professional Chef at Grace's Catering" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);">
+                    <img src="assets/images/chef.jpg" alt="Professional Chef at Grace's Catering" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);">
                 </div>
                 <div>
                     <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px; line-height: 1.6;">
@@ -1301,7 +1316,7 @@
                         <div class="contact-icon">✉️</div>
                         <div>
                             <h4 style="font-weight: 600; color: var(--luxury-charcoal); margin-bottom: 5px;">Email</h4>
-                            <p style="color: #666;">gracesvilmt@gmail.com</p>
+                            <p style="color: #666;">graceswilm@gmail.com</p>
                             <p style="color: #999; font-size: 14px;">We respond within 24 hours</p>
                         </div>
                     </div>
@@ -1355,7 +1370,7 @@
                         Creating exceptional culinary experiences for every occasion. Professional catering services in Warrenton, VA and surrounding areas.
                     </p>
                     <div style="display: flex; gap: 15px;">
-                        <a href="mailto:gracesvilmt@gmail.com" style="color: #ccc; font-size: 20px;">✉️</a>
+                        <a href="mailto:graceswilm@gmail.com" style="color: #ccc; font-size: 20px;">✉️</a>
                         <a href="tel:540-270-8044" style="color: #ccc; font-size: 20px;">📞</a>
                     </div>
                 </div>
@@ -1377,7 +1392,7 @@
                     <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 20px;">Contact Info</h4>
                     <div style="color: #ccc;">
                         <p style="margin-bottom: 10px;">📞 (540) 270-8044</p>
-                        <p style="margin-bottom: 10px;">✉️ gracesvilmt@gmail.com</p>
+                        <p style="margin-bottom: 10px;">✉️ graceswilm@gmail.com</p>
                         <p>📍 81 Broadview Ave<br>Warrenton, VA 20186</p>
                     </div>
                 </div>
@@ -1520,12 +1535,55 @@
             startCarousel();
             
             console.log('🎉 Carousel initialization complete!');
+            
+            // Expose functions globally for arrow buttons
+            window.carouselShowSlide = showSlide;
+        }
+
+        // Carousel navigation functions (for arrow buttons)
+        function carouselPrev() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentIndex = 0;
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('active')) {
+                    currentIndex = index;
+                }
+            });
+            const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+            if (window.carouselShowSlide) {
+                window.carouselShowSlide(newIndex);
+            }
+        }
+
+        function carouselNext() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentIndex = 0;
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('active')) {
+                    currentIndex = index;
+                }
+            });
+            const newIndex = (currentIndex + 1) % slides.length;
+            if (window.carouselShowSlide) {
+                window.carouselShowSlide(newIndex);
+            }
         }
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             console.log('📄 DOM loaded - initializing carousel...');
             setTimeout(initCarousel, 100); // Small delay to ensure all elements are rendered
+            
+            // Add hover effects to carousel arrows
+            const arrows = document.querySelectorAll('.carousel-arrow');
+            arrows.forEach(arrow => {
+                arrow.addEventListener('mouseenter', () => {
+                    arrow.style.background = 'rgba(0,0,0,0.5)';
+                });
+                arrow.addEventListener('mouseleave', () => {
+                    arrow.style.background = 'rgba(0,0,0,0.3)';
+                });
+            });
         });
 
         // Smooth scrolling for navigation links
