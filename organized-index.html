@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grace's Catering - Premium Catering Services</title>
+    <meta name="description" content="Exceptional culinary experiences for weddings, corporate events, and private celebrations in Warrenton, VA. Professional catering services with elegant presentation.">
+    <meta name="theme-color" content="#DB9DC2">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Grace's Catering - Premium Catering Services">
+    <meta property="og:description" content="Exceptional culinary experiences for your most unforgettable moments">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gracescatering.com">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <div class="logo-icon">G</div>
+                <div>
+                    <div class="logo-text">Grace's Catering</div>
+                    <div style="font-size: 12px; color: #666;">Premium Catering Services</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#contact" class="btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Image Carousel -->
+    <section id="home" class="hero">
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <img src="assets/images/hero1.jpg" alt="Grace's Catering elegant sushi platter">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/hero2.jpg" alt="Grace's Catering premium buffet setup">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/hero3.jpg" alt="Grace's Catering elegant food presentation">
+            </div>
+        </div>
+        <div class="carousel-overlay"></div>
+        
+        <div class="container hero-content">
+            <h1>Exceptional Catering<br>Unforgettable Experiences</h1>
+            <p>Elevate your events with our premium catering services. From intimate gatherings to corporate celebrations, we create culinary experiences that leave lasting impressions.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Plan Your Event</a>
+                <a href="#gallery" class="btn-secondary">View Our Work</a>
+            </div>
+        </div>
+        
+        <div class="carousel-nav">
+            <div class="carousel-dot active" onclick="currentSlide(1)"></div>
+            <div class="carousel-dot" onclick="currentSlide(2)"></div>
+            <div class="carousel-dot" onclick="currentSlide(3)"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Premium Services</h2>
+                <p class="section-subtitle">We specialize in creating extraordinary culinary experiences tailored to your unique vision and requirements.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">🍽️</div>
+                    <h3 class="service-title">Corporate Events</h3>
+                    <p class="service-description">Professional catering for business meetings, conferences, and corporate celebrations. Impress your clients and colleagues with our sophisticated menu options.</p>
+                    <ul class="service-features">
+                        <li>Executive lunch meetings</li>
+                        <li>Conference catering</li>
+                        <li>Corporate celebrations</li>
+                        <li>Business receptions</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">💒</div>
+                    <h3 class="service-title">Wedding Celebrations</h3>
+                    <p class="service-description">Make your special day unforgettable with our exquisite wedding catering services. From intimate ceremonies to grand receptions.</p>
+                    <ul class="service-features">
+                        <li>Cocktail hour appetizers</li>
+                        <li>Plated dinner service</li>
+                        <li>Buffet presentations</li>
+                        <li>Wedding cake service</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">🎉</div>
+                    <h3 class="service-title">Private Events</h3>
+                    <p class="service-description">Intimate gatherings and private celebrations deserve special attention. We create personalized dining experiences for your guests.</p>
+                    <ul class="service-features">
+                        <li>Birthday celebrations</li>
+                        <li>Anniversary dinners</li>
+                        <li>Holiday parties</li>
+                        <li>Family reunions</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">🍱</div>
+                    <h3 class="service-title">Specialty Cuisine</h3>
+                    <p class="service-description">Diverse culinary offerings including Asian specialties, sushi platters, and international cuisine to satisfy every palate.</p>
+                    <ul class="service-features">
+                        <li>Fresh sushi and sashimi</li>
+                        <li>Asian fusion dishes</li>
+                        <li>International appetizers</li>
+                        <li>Custom menu creation</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">📋</div>
+                    <h3 class="service-title">Event Planning</h3>
+                    <p class="service-description">Full-service event planning and coordination to ensure every detail is perfectly executed for your special occasion.</p>
+                    <ul class="service-features">
+                        <li>Menu consultation</li>
+                        <li>Event coordination</li>
+                        <li>Staff management</li>
+                        <li>Setup and cleanup</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">🚚</div>
+                    <h3 class="service-title">Delivery & Setup</h3>
+                    <p class="service-description">Professional delivery and setup services ensuring your food arrives fresh and beautifully presented at your venue.</p>
+                    <ul class="service-features">
+                        <li>Timely delivery</li>
+                        <li>Professional setup</li>
+                        <li>Serving equipment</li>
+                        <li>Pickup coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section" style="background: var(--luxury-pearl);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Culinary Artistry</h2>
+                <p class="section-subtitle">Experience the visual feast of our premium catering services through our portfolio of memorable events.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/gallery1.jpg" alt="Grace's Catering signature sushi presentation">
+                    <div class="gallery-overlay">
+                        <h4>Signature Sushi Presentation</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery2.jpg" alt="Elegant buffet arrangement with multiple platters">
+                    <div class="gallery-overlay">
+                        <h4>Elegant Buffet Arrangement</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery3.jpg" alt="Gourmet appetizer selection">
+                    <div class="gallery-overlay">
+                        <h4>Gourmet Appetizer Selection</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery4.jpg" alt="Fresh vegetable and fruit display">
+                    <div class="gallery-overlay">
+                        <h4>Fresh Vegetable & Fruit Display</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery5.jpg" alt="Artisanal egg salad canapés">
+                    <div class="gallery-overlay">
+                        <h4>Artisanal Egg Salad Canapés</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery6.jpg" alt="Premium shrimp platter presentation">
+                    <div class="gallery-overlay">
+                        <h4>Premium Shrimp Platter</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#contact" class="btn-primary">View More & Get Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Grace's Catering</h2>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <div>
+                    <div style="background: linear-gradient(135deg, var(--luxury-blush), var(--luxury-rose)); height: 400px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">👨‍🍳</div>
+                </div>
+                <div>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px; line-height: 1.6;">
+                        With years of experience in premium catering services, Grace's Catering has established itself as Warrenton's premier choice for exceptional culinary experiences. We pride ourselves on attention to detail, quality ingredients, and impeccable presentation.
+                    </p>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px; line-height: 1.6;">
+                        Our team of experienced professionals is dedicated to making your event memorable through outstanding food, elegant presentation, and seamless service. From intimate gatherings to large corporate events, we bring the same level of excellence to every occasion.
+                    </p>
+                    <a href="#contact" class="btn-primary">Start Planning Your Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section" style="background: var(--luxury-pearl);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it. Here's what our satisfied clients have to say about their Grace's Catering experience.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">SJ</div>
+                    <div class="stars">★★★★★</div>
+                    <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+                        "Grace's Catering exceeded our expectations for our annual company retreat. The presentation was stunning and the flavors were incredible. Our employees are still talking about it!"
+                    </p>
+                    <h4 style="font-weight: 600; color: var(--luxury-charcoal);">Sarah Johnson</h4>
+                    <p style="color: #999; font-size: 14px;">Corporate Event Manager</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">MD</div>
+                    <div class="stars">★★★★★</div>
+                    <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+                        "Our wedding day was perfect, and Grace's Catering played a huge part in that. From the tasting to the final cleanup, everything was handled with such professionalism and care."
+                    </p>
+                    <h4 style="font-weight: 600; color: var(--luxury-charcoal);">Michael & Jennifer Davis</h4>
+                    <p style="color: #999; font-size: 14px;">Wedding Couple</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">PW</div>
+                    <div class="stars">★★★★★</div>
+                    <p style="font-style: italic; color: #666; margin-bottom: 20px;">
+                        "I've used Grace's Catering for multiple family celebrations. The attention to detail and quality of ingredients is consistently exceptional. They truly understand elegant dining."
+                    </p>
+                    <h4 style="font-weight: 600; color: var(--luxury-charcoal);">Dr. Patricia Williams</h4>
+                    <p style="color: #999; font-size: 14px;">Private Party Host</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Plan Your Perfect Event</h2>
+                <p class="section-subtitle">Ready to create an unforgettable culinary experience? Get in touch with us to discuss your event requirements and receive a personalized quote.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 30px; color: var(--luxury-charcoal);">Get Your Free Quote</h3>
+                    
+                    <form action="https://formspree.io/f/xpznvqnz" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" name="firstName" class="form-input" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" name="lastName" class="form-input" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" name="email" class="form-input" placeholder="john.doe@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" name="phone" class="form-input" placeholder="(540) 270-8044" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Event Date</label>
+                                <input type="date" name="eventDate" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Number of Guests</label>
+                                <select name="guestCount" class="form-select">
+                                    <option value="">Select guest count</option>
+                                    <option value="10-25">10-25 guests</option>
+                                    <option value="26-50">26-50 guests</option>
+                                    <option value="51-100">51-100 guests</option>
+                                    <option value="101-200">101-200 guests</option>
+                                    <option value="200+">200+ guests</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Event Type</label>
+                            <select name="eventType" class="form-select">
+                                <option value="">Select event type</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="private">Private Party</option>
+                                <option value="holiday">Holiday Celebration</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Event Details & Special Requests</label>
+                            <textarea name="message" class="form-textarea" rows="4" placeholder="Tell us about your event, menu preferences, dietary restrictions, or any special requests..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%; padding: 15px;">
+                            Request Free Quote
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 30px; color: var(--luxury-charcoal);">Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4 style="font-weight: 600; color: var(--luxury-charcoal); margin-bottom: 5px;">Phone</h4>
+                            <p style="color: #666;">(540) 270-8044</p>
+                            <p style="color: #999; font-size: 14px;">Call or text for immediate assistance</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4 style="font-weight: 600; color: var(--luxury-charcoal); margin-bottom: 5px;">Email</h4>
+                            <p style="color: #666;">gracesvilmt@gmail.com</p>
+                            <p style="color: #999; font-size: 14px;">We respond within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4 style="font-weight: 600; color: var(--luxury-charcoal); margin-bottom: 5px;">Address</h4>
+                            <p style="color: #666;">81 Broadview Ave</p>
+                            <p style="color: #666;">Warrenton, VA 20186</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h4 style="font-weight: 600; color: var(--luxury-charcoal); margin-bottom: 5px;">Business Hours</h4>
+                            <p style="color: #666;">Monday - Sunday</p>
+                            <p style="color: #666;">By appointment</p>
+                            <p style="color: #999; font-size: 14px;">Flexible scheduling for events</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--luxury-blush); padding: 20px; border-radius: 15px; margin-top: 30px;">
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 15px; color: var(--luxury-charcoal);">Why Choose Grace's Catering?</h4>
+                        <ul style="list-style: none; color: #666;">
+                            <li style="margin-bottom: 8px;">• Professional service with attention to detail</li>
+                            <li style="margin-bottom: 8px;">• Fresh, high-quality ingredients</li>
+                            <li style="margin-bottom: 8px;">• Customizable menus for any event</li>
+                            <li style="margin-bottom: 8px;">• Full-service event support</li>
+                            <li>• Competitive pricing with no hidden fees</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <div class="footer-icon">G</div>
+                        <div>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Grace's Catering</h3>
+                        </div>
+                    </div>
+                    <p style="color: #ccc; margin-bottom: 20px;">
+                        Creating exceptional culinary experiences for every occasion. Professional catering services in Warrenton, VA and surrounding areas.
+                    </p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="mailto:gracesvilmt@gmail.com" style="color: #ccc; font-size: 20px;">✉️</a>
+                        <a href="tel:540-270-8044" style="color: #ccc; font-size: 20px;">📞</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; color: #ccc;">
+                        <li style="margin-bottom: 10px;"><a href="#home" style="color: #ccc; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#services" style="color: #ccc; text-decoration: none;">Services</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#gallery" style="color: #ccc; text-decoration: none;">Gallery</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#about" style="color: #ccc; text-decoration: none;">About</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#testimonials" style="color: #ccc; text-decoration: none;">Reviews</a></li>
+                        <li><a href="#contact" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 20px;">Contact Info</h4>
+                    <div style="color: #ccc;">
+                        <p style="margin-bottom: 10px;">📞 (540) 270-8044</p>
+                        <p style="margin-bottom: 10px;">✉️ gracesvilmt@gmail.com</p>
+                        <p>📍 81 Broadview Ave<br>Warrenton, VA 20186</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #444; padding-top: 30px; text-align: center; color: #ccc;">
+                <p>© 2024 Grace's Catering. All rights reserved. | Premium catering services in Warrenton, VA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
