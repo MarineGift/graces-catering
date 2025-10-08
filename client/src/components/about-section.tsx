@@ -1,4 +1,4 @@
-import chefImg from "@assets/KakaoTalk_20251003_095827060_01_1759726735352.jpg";
+import chefImg from "@assets/graces-catering-about.jpg";
 
 export default function AboutSection() {
   const scrollToSection = (sectionId: string) => {
