@@ -21,14 +21,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Grace's Catering - Main Stylesheet */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         :root {
             --luxury-pink: #DB9DC2;
             --luxury-rose: #E6B8D6;
@@ -37,20 +35,24 @@
             --luxury-charcoal: #2D1B1E;
             --luxury-pearl: #FDF8FC;
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--luxury-charcoal);
             background: linear-gradient(135deg, var(--luxury-pearl) 0%, #F8F5F7 50%, var(--luxury-blush) 100%);
         }
-
+        
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        
         /* Navigation */
         .navbar {
             position: fixed;
@@ -63,35 +65,34 @@
             border-bottom: 1px solid rgba(219, 157, 194, 0.2);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
-
+        
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
+        
         .logo-icon {
-            width: 40px !important;
-            height: 40px !important;
-            background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose)) !important;
-            border-radius: 50% !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            color: white !important;
-            font-family: 'Playfair Display', serif !important;
-            font-weight: bold !important;
-            font-size: 18px !important;
-            box-shadow: 0 2px 10px rgba(219, 157, 194, 0.3) !important;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-size: 18px;
         }
-
+        
         .logo-text {
             font-family: 'Playfair Display', serif;
             font-size: 24px;
@@ -101,24 +102,24 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
+        
         .nav-links {
             display: flex;
             gap: 30px;
             align-items: center;
         }
-
+        
         .nav-link {
             color: var(--luxury-charcoal);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-
+        
         .nav-link:hover {
             color: var(--luxury-pink);
         }
-
+        
         .btn-primary {
             background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose));
             color: white;
@@ -130,75 +131,49 @@
             border: none;
             cursor: pointer;
         }
-
+        
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(219, 157, 194, 0.4);
         }
-
-        /* Hero Section with Carousel */
+        
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            background: linear-gradient(135deg, var(--luxury-pink) 0%, var(--luxury-rose) 100%);
+            color: white;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
-
-        .carousel-container {
+        
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
         }
-
-        .carousel-slide {
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            transition: opacity 1s ease-in-out !important;
-            z-index: 1 !important;
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
-
-        .carousel-slide.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-            z-index: 2 !important;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .carousel-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(219, 157, 194, 0.8) 0%, rgba(230, 184, 214, 0.7) 100%);
-            z-index: 3;
-        }
-
+        
         .hero-content {
             position: relative;
-            z-index: 4;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
-            text-align: center;
-            color: white;
         }
-
+        
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 8vw, 6rem);
@@ -206,22 +181,21 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-
+        
         .hero p {
             font-size: clamp(1.2rem, 3vw, 1.5rem);
             margin-bottom: 40px;
             opacity: 0.95;
             font-weight: 300;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
-
+        
         .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
-
+        
         .btn-secondary {
             background: transparent;
             color: white;
@@ -232,54 +206,22 @@
             font-weight: 600;
             transition: all 0.3s;
         }
-
+        
         .btn-secondary:hover {
             background: white;
             color: var(--luxury-pink);
         }
-
-        /* Carousel Navigation */
-        .carousel-nav {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 5;
-        }
-
-        .carousel-dot {
-            width: 12px !important;
-            height: 12px !important;
-            border-radius: 50% !important;
-            background: rgba(255, 255, 255, 0.5) !important;
-            cursor: pointer !important;
-            transition: all 0.3s !important;
-            border: none !important;
-            outline: none !important;
-        }
-
-        .carousel-dot.active {
-            background: white !important;
-            transform: scale(1.2) !important;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        .carousel-dot:hover {
-            background: rgba(255, 255, 255, 0.8) !important;
-        }
-
+        
         /* Sections */
         .section {
             padding: 100px 0;
         }
-
+        
         .section-header {
             text-align: center;
             margin-bottom: 60px;
         }
-
+        
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
@@ -290,14 +232,14 @@
             background-clip: text;
             margin-bottom: 20px;
         }
-
+        
         .section-subtitle {
             font-size: 1.2rem;
             color: #666;
             max-width: 600px;
             margin: 0 auto;
         }
-
+        
         /* Services Grid */
         .services-grid {
             display: grid;
@@ -305,7 +247,7 @@
             gap: 30px;
             margin-top: 60px;
         }
-
+        
         .service-card {
             background: white;
             border-radius: 20px;
@@ -314,12 +256,12 @@
             transition: all 0.3s;
             border: 1px solid rgba(219, 157, 194, 0.2);
         }
-
+        
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(219, 157, 194, 0.3);
         }
-
+        
         .service-image {
             width: 100%;
             height: 200px;
@@ -331,7 +273,7 @@
             justify-content: center;
             font-size: 3rem;
         }
-
+        
         .service-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -339,24 +281,24 @@
             color: var(--luxury-charcoal);
             margin-bottom: 15px;
         }
-
+        
         .service-description {
             color: #666;
             margin-bottom: 20px;
             line-height: 1.6;
         }
-
+        
         .service-features {
             list-style: none;
         }
-
+        
         .service-features li {
             color: #666;
             margin-bottom: 8px;
             padding-left: 20px;
             position: relative;
         }
-
+        
         .service-features li::before {
             content: '•';
             color: var(--luxury-pink);
@@ -364,178 +306,43 @@
             position: absolute;
             left: 0;
         }
-
-        /* Menu Section */
-        .menu-categories {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .menu-category-btn {
-            padding: 12px 30px;
-            border: 2px solid var(--luxury-pink);
-            background: white;
-            color: var(--luxury-pink);
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .menu-category-btn.active,
-        .menu-category-btn:hover {
-            background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose));
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(219, 157, 194, 0.4);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .menu-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            border: 1px solid rgba(219, 157, 194, 0.2);
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(219, 157, 194, 0.3);
-        }
-
-        .menu-item-image {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            background: var(--luxury-blush);
-        }
-
-        .menu-item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.3s;
-        }
-
-        .menu-item:hover .menu-item-image img {
-            transform: scale(1.1);
-        }
-
-        .menu-item-content {
-            padding: 20px;
-        }
-
-        .menu-item-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--luxury-charcoal);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .menu-item-category {
-            text-align: center;
-            color: var(--luxury-pink);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .menu-content {
-            display: none;
-        }
-
-        .menu-content.active {
-            display: block;
-        }
-
-        /* Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 60px;
-        }
-
-        .gallery-item {
-            position: relative;
-            height: 250px;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-            padding: 20px;
-        }
-
+        
         /* Contact Form */
         .contact-section {
             background: var(--luxury-pearl);
         }
-
+        
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             margin-top: 60px;
         }
-
+        
         .contact-form {
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-
+        
         .form-group {
             margin-bottom: 25px;
         }
-
+        
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-
+        
         .form-label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--luxury-charcoal);
         }
-
+        
         .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 12px 15px;
@@ -544,26 +351,26 @@
             font-size: 16px;
             transition: border-color 0.3s;
         }
-
+        
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: var(--luxury-pink);
         }
-
+        
         .contact-info {
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-
+        
         .contact-item {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 25px;
         }
-
+        
         .contact-icon {
             width: 50px;
             height: 50px;
@@ -575,7 +382,31 @@
             color: white;
             font-size: 20px;
         }
-
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+        }
+        
+        .gallery-item {
+            background: linear-gradient(135deg, var(--luxury-blush), var(--luxury-rose));
+            height: 250px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
         /* Testimonials */
         .testimonials-grid {
             display: grid;
@@ -583,7 +414,7 @@
             gap: 30px;
             margin-top: 60px;
         }
-
+        
         .testimonial-card {
             background: white;
             padding: 30px;
@@ -591,7 +422,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-
+        
         .testimonial-avatar {
             width: 80px;
             height: 80px;
@@ -605,34 +436,34 @@
             font-size: 24px;
             font-weight: bold;
         }
-
+        
         .stars {
             color: #ffd700;
             font-size: 20px;
             margin-bottom: 15px;
         }
-
+        
         /* Footer */
         .footer {
             background: linear-gradient(135deg, var(--luxury-charcoal), #1a1a1a);
             color: white;
             padding: 60px 0 30px;
         }
-
+        
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-
+        
         .footer-logo {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 20px;
         }
-
+        
         .footer-icon {
             width: 40px;
             height: 40px;
@@ -644,7 +475,7 @@
             color: white;
             font-weight: bold;
         }
-
+        
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -667,22 +498,36 @@
             .section {
                 padding: 60px 0;
             }
-            
-            .carousel-nav {
-                bottom: 20px;
-            }
         }
-
+        
         /* Utility Classes */
         .text-center { text-align: center; }
         .mb-4 { margin-bottom: 1rem; }
         .mb-6 { margin-bottom: 1.5rem; }
         .mb-8 { margin-bottom: 2rem; }
         .mt-8 { margin-top: 2rem; }
-
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
+        }
+        
+        /* Install Button */
+        .install-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--luxury-pink), var(--luxury-rose));
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(219, 157, 194, 0.4);
+            display: none;
+            z-index: 1000;
         }
     </style>
 </head>
@@ -691,7 +536,7 @@
     <nav class="navbar">
         <div class="container nav-content">
             <div class="logo">
-                <div class="logo-icon" style="width: 40px !important; height: 40px !important; background: linear-gradient(135deg, #DB9DC2, #E6B8D6) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; color: white !important; font-family: 'Playfair Display', serif !important; font-weight: bold !important; font-size: 18px !important; box-shadow: 0 2px 10px rgba(219, 157, 194, 0.3) !important;">G</div>
+                <div class="logo-icon">G</div>
                 <div>
                     <div class="logo-text">Grace's Catering</div>
                     <div style="font-size: 12px; color: #666;">Premium Catering Services</div>
@@ -700,7 +545,6 @@
             <div class="nav-links">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#services" class="nav-link">Services</a>
-                <a href="#menu" class="nav-link">Menu</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#testimonials" class="nav-link">Reviews</a>
@@ -709,21 +553,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Image Carousel -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="carousel-container">
-            <div class="carousel-slide active" data-slide="0">
-                <img src="assets/images/hero1.jpg" alt="Grace's Catering elegant sushi platter">
-            </div>
-            <div class="carousel-slide" data-slide="1">
-                <img src="assets/images/hero2.jpg" alt="Grace's Catering premium buffet setup">
-            </div>
-            <div class="carousel-slide" data-slide="2">
-                <img src="assets/images/hero3.jpg" alt="Grace's Catering elegant food presentation">
-            </div>
-        </div>
-        <div class="carousel-overlay"></div>
-        
         <div class="container hero-content">
             <h1>Exceptional Catering<br>Unforgettable Experiences</h1>
             <p>Elevate your events with our premium catering services. From intimate gatherings to corporate celebrations, we create culinary experiences that leave lasting impressions.</p>
@@ -731,12 +562,6 @@
                 <a href="#contact" class="btn-primary">Plan Your Event</a>
                 <a href="#gallery" class="btn-secondary">View Our Work</a>
             </div>
-        </div>
-        
-        <div class="carousel-nav">
-            <div class="carousel-dot active" data-slide="0"></div>
-            <div class="carousel-dot" data-slide="1"></div>
-            <div class="carousel-dot" data-slide="2"></div>
         </div>
     </section>
 
@@ -833,224 +658,16 @@
             </div>
             
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/images/gallery1.jpg" alt="Grace's Catering signature sushi presentation">
-                    <div class="gallery-overlay">
-                        <h4>Signature Sushi Presentation</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/gallery2.jpg" alt="Elegant buffet arrangement with multiple platters">
-                    <div class="gallery-overlay">
-                        <h4>Elegant Buffet Arrangement</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/gallery3.jpg" alt="Gourmet appetizer selection">
-                    <div class="gallery-overlay">
-                        <h4>Gourmet Appetizer Selection</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/gallery4.jpg" alt="Fresh vegetable and fruit display">
-                    <div class="gallery-overlay">
-                        <h4>Fresh Vegetable & Fruit Display</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/gallery5.jpg" alt="Artisanal egg salad canapés">
-                    <div class="gallery-overlay">
-                        <h4>Artisanal Egg Salad Canapés</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/gallery6.jpg" alt="Premium shrimp platter presentation">
-                    <div class="gallery-overlay">
-                        <h4>Premium Shrimp Platter</h4>
-                    </div>
-                </div>
+                <div class="gallery-item">🍣 Sushi Platter</div>
+                <div class="gallery-item">🥗 Elegant Buffet</div>
+                <div class="gallery-item">🍤 Gourmet Appetizers</div>
+                <div class="gallery-item">🥬 Fresh Displays</div>
+                <div class="gallery-item">🥪 Artisanal Canapés</div>
+                <div class="gallery-item">🦐 Premium Shrimp</div>
             </div>
             
             <div class="text-center mt-8">
                 <a href="#contact" class="btn-primary">View More & Get Quote</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menu" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Premium Menu</h2>
-                <p class="section-subtitle">Discover our exquisite selection of culinary offerings, crafted with the finest ingredients and presented with elegance.</p>
-            </div>
-            
-            <div class="menu-categories">
-                <button class="menu-category-btn active" data-category="all" data-testid="button-menu-all">All Items</button>
-                <button class="menu-category-btn" data-category="appetizers" data-testid="button-menu-appetizers">Appetizers</button>
-                <button class="menu-category-btn" data-category="dumplings-rolls" data-testid="button-menu-dumplings">Dumplings & Rolls</button>
-                <button class="menu-category-btn" data-category="korean-specialties" data-testid="button-menu-korean">Korean Specialties</button>
-                <button class="menu-category-btn" data-category="salads" data-testid="button-menu-salads">Salads</button>
-            </div>
-            
-            <div class="menu-grid" id="menuGrid">
-                <!-- Appetizers -->
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-cocktail-shrimp">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/cocktail-shrimp.jpg" alt="Cocktail Shrimp">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Cocktail Shrimp</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-crab-cakes">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/crab-cakes.png" alt="Crab Cakes">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Crab Cakes</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-honey-glazed-cod">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/honey-glazed-cod.jpg" alt="Honey Glazed Cod">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Honey Glazed Cod</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="appetizers" data-testid="menu-item-salmon">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/appetizers/salmon.png" alt="Salmon">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Salmon</h3>
-                        <p class="menu-item-category">Appetizers</p>
-                    </div>
-                </div>
-                
-                <!-- Dumplings & Rolls -->
-                <div class="menu-item" data-category="dumplings-rolls" data-testid="menu-item-mandu">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/dumplings-rolls/mandu.jpg" alt="Dumplings (Mandu)">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Dumplings (Mandu)</h3>
-                        <p class="menu-item-category">Dumplings & Rolls</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="dumplings-rolls" data-testid="menu-item-steamed-fried-mandu">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/dumplings-rolls/steamed-fried-mandu.jpg" alt="Steamed or Fried Mandu">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Steamed or Fried Mandu</h3>
-                        <p class="menu-item-category">Dumplings & Rolls</p>
-                    </div>
-                </div>
-                
-                <!-- Korean Specialties -->
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-bulgogi">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/korean-specialties/bulgogi.png" alt="Bulgogi">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Bulgogi</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-chicken-wings">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/korean-specialties/chicken-wings.jpg" alt="Chicken Wings">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Chicken Wings</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-galbi">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/korean-specialties/galbi.jpg" alt="Galbi">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Galbi</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="korean-specialties" data-testid="menu-item-korean-style-chicken">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/korean-specialties/korean-style-chicken.jpg" alt="Korean Style Chicken">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Korean Style Chicken</h3>
-                        <p class="menu-item-category">Korean Specialties</p>
-                    </div>
-                </div>
-                
-                <!-- Salads -->
-                <div class="menu-item" data-category="salads" data-testid="menu-item-chicken-salad">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/salads/chicken-salad.jpg" alt="Chicken Salad">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Chicken Salad</h3>
-                        <p class="menu-item-category">Salads</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="salads" data-testid="menu-item-egg-salad">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/salads/egg-salad.webp" alt="Egg Salad">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Egg Salad</h3>
-                        <p class="menu-item-category">Salads</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="salads" data-testid="menu-item-garden-salad">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/salads/garden-salad.webp" alt="Garden Salad">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Garden Salad</h3>
-                        <p class="menu-item-category">Salads</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="salads" data-testid="menu-item-tuna-salad">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/salads/tuna-salad.jpg" alt="Tuna Salad">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Tuna Salad</h3>
-                        <p class="menu-item-category">Salads</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item" data-category="salads" data-testid="menu-item-fruits-cheese">
-                    <div class="menu-item-image">
-                        <img src="assets/images/menu/salads/fruits-cheese.jpg" alt="Fruits & Cheese">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Fruits & Cheese</h3>
-                        <p class="menu-item-category">Salads</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <a href="#contact" class="btn-primary" data-testid="button-contact-menu">Order Your Custom Menu</a>
             </div>
         </div>
     </section>
@@ -1276,7 +893,6 @@
                     <ul style="list-style: none; color: #ccc;">
                         <li style="margin-bottom: 10px;"><a href="#home" style="color: #ccc; text-decoration: none;">Home</a></li>
                         <li style="margin-bottom: 10px;"><a href="#services" style="color: #ccc; text-decoration: none;">Services</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#menu" style="color: #ccc; text-decoration: none;">Menu</a></li>
                         <li style="margin-bottom: 10px;"><a href="#gallery" style="color: #ccc; text-decoration: none;">Gallery</a></li>
                         <li style="margin-bottom: 10px;"><a href="#about" style="color: #ccc; text-decoration: none;">About</a></li>
                         <li style="margin-bottom: 10px;"><a href="#testimonials" style="color: #ccc; text-decoration: none;">Reviews</a></li>
@@ -1288,7 +904,7 @@
                     <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 20px;">Contact Info</h4>
                     <div style="color: #ccc;">
                         <p style="margin-bottom: 10px;">📞 (540) 270-8044</p>
-                        <p style="margin-bottom: 10px;">✉️ graceswlim@gmail.com</p>
+                        <p style="margin-bottom: 10px;">✉️ gracesvilmt@gmail.com</p>
                         <p>📍 81 Broadview Ave<br>Warrenton, VA 20186</p>
                     </div>
                 </div>
@@ -1300,255 +916,70 @@
         </div>
     </footer>
 
-    <script>
-        // Console log to verify script loading
-        console.log('🚀 Grace\'s Catering JavaScript loading...');
+    <!-- Install App Button -->
+    <button class="install-btn" onclick="installApp()" id="installBtn">📱 Install App</button>
 
+    <script>
+        // PWA Install
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBtn').style.display = 'block';
+        });
+        
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    document.getElementById('installBtn').style.display = 'none';
+                });
+            }
+        }
+        
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('sw.js')
                     .then((registration) => {
-                        console.log('✅ Service Worker registered successfully:', registration.scope);
+                        console.log('SW registered: ', registration);
                     })
-                    .catch((error) => {
-                        console.log('❌ Service Worker registration failed:', error);
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
                     });
             });
         }
-
-        // Image Carousel functionality with improved logic
-        let currentSlideIndex = 0;
-        let carouselInterval;
-        let isHovered = false;
-
-        function initCarousel() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            console.log('🎢 Initializing carousel...');
-            console.log('📸 Found', slides.length, 'slides');
-            console.log('🎯 Found', dots.length, 'dots');
-            
-            if (slides.length === 0 || dots.length === 0) {
-                console.error('❌ No slides or dots found!');
-                return;
-            }
-
-            // Show slide function with forced styling
-            function showSlide(index) {
-                console.log('🖼️ Showing slide:', index);
-                
-                // Force hide all slides
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    slide.style.opacity = '0';
-                    slide.style.visibility = 'hidden';
-                    slide.style.zIndex = '1';
-                });
-                
-                // Force hide all dots
-                dots.forEach((dot, i) => {
-                    dot.classList.remove('active');
-                });
-                
-                // Ensure valid index
-                if (index >= slides.length) index = 0;
-                if (index < 0) index = slides.length - 1;
-                currentSlideIndex = index;
-                
-                // Force show current slide
-                const currentSlide = slides[currentSlideIndex];
-                const currentDot = dots[currentSlideIndex];
-                
-                if (currentSlide) {
-                    currentSlide.classList.add('active');
-                    currentSlide.style.opacity = '1';
-                    currentSlide.style.visibility = 'visible';
-                    currentSlide.style.zIndex = '2';
-                    console.log('✅ Active slide set:', currentSlideIndex);
+        
+        // Smooth scrolling for mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-                
-                if (currentDot) {
-                    currentDot.classList.add('active');
-                    console.log('✅ Active dot set:', currentSlideIndex);
-                }
-            }
-
-            // Next slide function
-            function nextSlide() {
-                if (!isHovered) {
-                    console.log('➡️ Moving to next slide');
-                    showSlide(currentSlideIndex + 1);
-                }
-            }
-
-            // Manual slide change
-            function goToSlide(index) {
-                console.log('🎯 Manual slide change to:', index);
-                showSlide(index);
-            }
-
-            // Start auto-rotation
-            function startCarousel() {
-                if (carouselInterval) clearInterval(carouselInterval);
-                carouselInterval = setInterval(nextSlide, 4000);
-                console.log('▶️ Carousel auto-rotation started');
-            }
-
-            // Stop auto-rotation
-            function stopCarousel() {
-                if (carouselInterval) {
-                    clearInterval(carouselInterval);
-                    carouselInterval = null;
-                    console.log('⏸️ Carousel auto-rotation stopped');
-                }
-            }
-
-            // Add click handlers to dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => goToSlide(index));
             });
-
-            // Add hover handlers
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                heroSection.addEventListener('mouseenter', () => {
-                    isHovered = true;
-                    stopCarousel();
-                    console.log('🖱️ Mouse entered - carousel paused');
-                });
-                
-                heroSection.addEventListener('mouseleave', () => {
-                    isHovered = false;
-                    startCarousel();
-                    console.log('🖱️ Mouse left - carousel resumed');
-                });
-            }
-
-            // Initialize first slide and start rotation
-            showSlide(0);
-            startCarousel();
-            
-            console.log('🎉 Carousel initialization complete!');
+        });
+        
+        // Form submission success message
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const button = form.querySelector('button[type="submit"]');
+                if (button) {
+                    button.innerHTML = 'Sending...';
+                    button.disabled = true;
+                }
+            });
         }
-
-        // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('📄 DOM loaded - initializing carousel...');
-            setTimeout(initCarousel, 100); // Small delay to ensure all elements are rendered
-        });
-
-        // Smooth scrolling for navigation links
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-
-        // Form submission handling
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    const button = form.querySelector('button[type="submit"]');
-                    if (button) {
-                        button.innerHTML = 'Sending Message...';
-                        button.disabled = true;
-                        
-                        // Re-enable button after 3 seconds (in case of error)
-                        setTimeout(() => {
-                            button.innerHTML = 'Request Free Quote';
-                            button.disabled = false;
-                        }, 3000);
-                    }
-                });
-            }
-        });
-
-        // Gallery interaction
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    if (img) {
-                        this.style.transform = 'scale(1.05)';
-                        setTimeout(() => {
-                            this.style.transform = 'scale(1)';
-                        }, 200);
-                    }
-                });
-            });
-        });
-
-        // Menu filtering functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const categoryButtons = document.querySelectorAll('.menu-category-btn');
-            const menuItems = document.querySelectorAll('.menu-item');
-            
-            console.log('🍽️ Initializing menu filters...');
-            console.log('📋 Found', categoryButtons.length, 'category buttons');
-            console.log('🍴 Found', menuItems.length, 'menu items');
-            
-            function filterMenu(category) {
-                console.log('🔍 Filtering menu by category:', category);
-                
-                menuItems.forEach(item => {
-                    const itemCategory = item.getAttribute('data-category');
-                    
-                    if (category === 'all' || itemCategory === category) {
-                        item.style.display = 'block';
-                        item.style.animation = 'fadeIn 0.5s ease-in';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            }
-            
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    // Update active button
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter menu items
-                    filterMenu(category);
-                    
-                    console.log('✅ Menu filtered:', category);
-                });
-            });
-            
-            // Add fade-in animation to menu items
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeIn {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            console.log('✅ Menu filtering initialized successfully!');
-        });
-
-        console.log('✨ All Grace\'s Catering scripts loaded successfully!');
     </script>
 </body>
 </html>
